@@ -20,7 +20,7 @@ logo:
   logo_desktop_height: "36px"
   logo_desktop_width: "36px"
   logo_mobile_height: "36px"
-  logo_mobile_width: "36px"
+logo_mobile_width: "36px"
 
 plugins:
   - jekyll-environment-variables
@@ -37,12 +37,12 @@ collections:
 
 defaults:
   - scope:
-      path: ""
-      type: posts
+    path: ""
+    type: posts
     values:
       layout: post
   - scope:
-      path: "images"
+    path: "images"
     values:
       image: true
   - scope:
