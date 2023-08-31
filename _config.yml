@@ -1,4 +1,4 @@
-baseurl: "/"
+baseurl: ""
 permalink: pretty
 title: "The Learning Mechanic"
 collections_dir: collections
