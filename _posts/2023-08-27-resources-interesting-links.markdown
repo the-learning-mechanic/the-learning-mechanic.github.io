@@ -1,13 +1,15 @@
 ---
 layout: post
-title: The Best Organizer Software
-date: 2017-09-12 00:00:00 +0300
-description: You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. # Add post description (optional)
+title: Resources and Interesting Links
+date: 2023-09-01 00:00:00 +0300
+description: References, resources and interesting links about ML, Machine Learning, AI, Artificial Intelligence, Convolutional Netorks, CNNs, etc.. # Add post description (optional)
 img: software.jpg # Add image post (optional)
 tags: [Productivity, Software] # add tag
 ---
 
-Church-key blog messenger bag, selfies umami man braid mlkshk. Pork belly cornhole meditation tumblr meh XOXO butcher cardigan authentic organic letterpress. Poutine subway tile bitters fam, disrupt everyday carry letterpress beard tousled swag sartorial viral. Retro af 3 wolf moon heirloom, pork belly man bun DIY chillwave. Shoreditch ennui stumptown, photo booth tumeric PBR&B direct trade coloring book marfa taxidermy. Gentrify brunch typewriter woke freegan. Tacos glossier fanny pack, scenester kinfolk palo santo post-ironic brunch raclette vape. Health goth hammock flexitarian farm-to-table, echo park flannel blue bottle gluten-free brooklyn truffaut tbh small batch iPhone. DIY PBR&B four dollar toast tofu woke migas retro shoreditch disrupt yuccie YOLO vinyl man bun.
+[FastAI ](https://wwww.fast.ai)is an organization founded by Jeremy Howard that aims to further research and explorations in machine learning via the libraries and deep learning courses they develop. It is one of the best sources for anyone who is interested in gaining a deep understanding of ML and AI. It's not just free, Jeremy doesn't even require you to create an account to access any of the material. 
+You can find his lectures on [Practical Deep Learning for Coders on YouTube: ](https://www.youtube.com/playlist?list=PLfYUBJiXbdtSvpQjSnJJ_PmDQB_VyT5iU)
+
 
 ### Church-key blog messenger bag
 
