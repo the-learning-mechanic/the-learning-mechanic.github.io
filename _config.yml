@@ -12,14 +12,14 @@ site-twitter: #if your site has a twitter account, enter it here
 author: Manuel Pardo # add your name
 author-img: manuel_pardo.png # add your photo
 about-author: This blog is my personal journey through FastAI's Part 2 of Machine Learning for coders. # add description
-social-twitter: # add your Twitter handle
-social-facebook: # add your Facebook handle
+social-twitter: C0untr4G3nt
+# social-facebook: # add your Facebook handle
 social-github: the-learning-mechanic # add your Github handle
 social-linkedin: mannypardo
-social-email: # manny.pardo@gmail.com
+# social-email: # 
 
 # Disqus
-discus-identifier: mr-brown # add your discus identifier
+#discus-identifier: mr-brown # add your discus identifier
 
 # Tracker
 analytics: # Google Analytics
