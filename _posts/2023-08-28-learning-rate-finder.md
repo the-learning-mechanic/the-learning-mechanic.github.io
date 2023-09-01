@@ -3,7 +3,7 @@ layout: post
 title: Learning Rate Finder and Annealing
 date: 2023-08-29 00:00:00 +0300
 description: Simulated Annealing using Fast AI with an example using cosine.
-img: MCEscher.jpg # Add image post (optional)
+img: mcescher.jpg # Add image post (optional)
 fig-caption: # Add figcaption (optional)
 tags: [FastAI, Annealing, Learning Rate]
 ---
