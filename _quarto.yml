@@ -1,0 +1,22 @@
+project:
+  type: website
+
+website:
+  title: "Manuel Pardo"
+
+  navbar:
+    right:
+      - about.qmd
+      - icon: github
+        href: https://github.com/the-learning-mechanic
+      - icon: linkedin
+        href: https://www.linkedin.com/in/mannypardo/
+      - icon: twitter
+        href: https://twitter.com/C0untr4G3nt
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+social-twitter: C0untr4G3nt
+
+
