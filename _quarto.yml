@@ -1,5 +1,6 @@
 project:
   type: website
+  outpu-dir: docs
 
 website:
   title: "Manuel Pardo"
