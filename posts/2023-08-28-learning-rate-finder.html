@@ -216,26 +216,36 @@ from fastai.optimize import *</code></pre>
     def zero_grad(self): self.opt.zero_grad()</code></pre>
 <p>Here, TrainLearner is a custom class that defines the neural network architecture, and predict() and get_loss() are functions that perform forward pass and backward pass through the network, respectively.</p>
 <p>Step 4: Define Annealing Schedule Next, define the annealing schedule. The annealing schedule should specify the starting temperature, ending temperature, and the reduction factor for each iteration. Here’s an example:</p>
-<p>start_temp = 1000 end_temp = 1e-6 reduction_factor = 0.95 schedule = np.linspace(start_temp, end_temp, num_iterations) ** reduction_factor This schedule starts with a high temperature (start_temp) and reduces it exponentially until reaching a low temperature (end_temp). The reduction factor (reduction_factor) controls the rate at which the temperature is reduced.</p>
+<pre><code>start_temp = 1000
+end_temp = 1e-6
+reduction_factor = 0.95
+schedule = np.linspace(start_temp, end_temp, num_iterations) ** reduction_factor</code></pre>
+<p>This schedule starts with a high temperature (start_temp) and reduces it exponentially until reaching a low temperature (end_temp). The reduction factor (reduction_factor) controls the rate at which the temperature is reduced.</p>
 <p>Step 5: Run Simulated Annealing Finally, run the simulated annealing algorithm. Here’s some sample code:</p>
 </section>
 </section>
 <section id="initialize-current-state-and-energy" class="level1">
 <h1>Initialize current state and energy</h1>
-<p>current_state = np.random.randn(784) current_energy = objective_function(current_state)</p>
-</section>
-<section id="iterate-over-annealing-schedule" class="level1">
-<h1>Iterate over annealing schedule</h1>
-<p>for temp in schedule: # Propose new state proposed_state = current_state + np.random.normal(size=(784)) proposed_energy = objective_function(proposed_state)</p>
-<pre><code># Acceptance probability
-acceptance_probability = min(1, np.exp(-(proposed_energy - current_energy) / temp))
+<pre><code>current_state = np.random.randn(784)
+current_energy = objective_function(current_state)
 
-# Update current state if accepted
-if np.random.uniform(0, 1) &lt; acceptance_probability:
-    current_state = proposed_state
-    current_energy = proposed_energy
-    </code></pre>
-<p>print(“Final state:”, current_state) print(“Final energy:”, current_energy) This code runs the simulated annealing algorithm for a fixed number of iterations specified by num_iterations. At each iteration, it proposes a new state based on the current state and evaluates the corresponding energy. If the proposed state is accepted according to the Metropolis criterion, the current state is updated. Otherwise, the current state remains unchanged.</p>
+# Iterate over annealing schedule
+for temp in schedule:
+    # Propose new state
+    proposed_state = current_state + np.random.normal(size=(784))
+    proposed_energy = objective_function(proposed_state)
+    
+    # Acceptance probability
+    acceptance_probability = min(1, np.exp(-(proposed_energy - current_energy) / temp))
+    
+    # Update current state if accepted
+    if np.random.uniform(0, 1) &lt; acceptance_probability:
+        current_state = proposed_state
+        current_energy = proposed_energy
+        
+print("Final state:", current_state)
+print("Final energy:", current_energy)</code></pre>
+<p>This code runs the simulated annealing algorithm for a fixed number of iterations specified by num_iterations. At each iteration, it proposes a new state based on the current state and evaluates the corresponding energy. If the proposed state is accepted according to the Metropolis criterion, the current state is updated. Otherwise, the current state remains unchanged.</p>
 <p>Results Let’s apply simulated annealing to optimize the hyperparameters of a simple neural network. We will use the MNIST dataset, which consists of handwritten digits images. Our goal is to achieve a test accuracy of at least 90%.</p>
 <p>Here are the results after running simulated annealing for 100 iterations:</p>
 <p>Final state: [0.001, 0.002, 0.003, …, 0.001] Final energy: 0.000123456789 Test accuracy: 92% As expected, the final state corresponds to the optimized hyperparameters, and the test accuracy is close to 90%. Note that the actual results may vary depending on the specific implementation details and random initialization.</p>
