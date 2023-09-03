@@ -6,7 +6,7 @@ about:
   links:
     - icon: clockicon.png
       text: Resume
-      href: posts/resume.pdf
+      href: Resume2023.html
     - icon: linkedin
       text: LinkedIn
       href: https://linkedin.com/ln/mannypardo
@@ -21,3 +21,4 @@ Thank you for stopping by. This blog is my way of documenting my journey through
 
 I am a former product leader and owner at Microsoft, Blackberry, and Lucent. I hold a bachelor's in Physics and a Master's in Computer Science. My interest in machine learning started from learning to use numpy, pandas, and SQLAlchemy as a Developer Evangelist Lead at a Geo-Spatial and Analytics company. My curiosity led me to the courses at FastAI where after a couple of false starts I joined a study group as a way to learn and interact with others who share a similar interest in machine learning.
 The combination of my fondness for linear algebra and diff equations, accessibility of Python as a language, and last three years working as a Developer Evangelist at a GeoSpatial and Analytics Company is what motivated me to go through the FastAI course.
+

@@ -3,6 +3,7 @@ layout: post
 title: Learning Rate Finder and Annealing
 author: Manuel Pardo
 date: "2023-09-02"
+code-copy: True
 description: Simulated Annealing using Fast AI with an example using cosine.
 imgage: mcescher.jpg # Add image post (optional)
 fig-caption: # Add figcaption (optional)
@@ -86,17 +87,19 @@ Here, TrainLearner is a custom class that defines the neural network architectur
 
 Step 4: Define Annealing Schedule
 Next, define the annealing schedule. The annealing schedule should specify the starting temperature, ending temperature, and the reduction factor for each iteration. Here's an example:
-
+```
 start_temp = 1000
 end_temp = 1e-6
 reduction_factor = 0.95
 schedule = np.linspace(start_temp, end_temp, num_iterations) ** reduction_factor
+```
 This schedule starts with a high temperature (start_temp) and reduces it exponentially until reaching a low temperature (end_temp). The reduction factor (reduction_factor) controls the rate at which the temperature is reduced.
 
 Step 5: Run Simulated Annealing
 Finally, run the simulated annealing algorithm. Here's some sample code:
 
 # Initialize current state and energy
+```
 current_state = np.random.randn(784)
 current_energy = objective_function(current_state)
 
@@ -116,6 +119,7 @@ for temp in schedule:
         
 print("Final state:", current_state)
 print("Final energy:", current_energy)
+```
 This code runs the simulated annealing algorithm for a fixed number of iterations specified by num_iterations. At each iteration, it proposes a new state based on the current state and evaluates the corresponding energy. If the proposed state is accepted according to the Metropolis criterion, the current state is updated. Otherwise, the current state remains unchanged.
 
 Results
