@@ -4,15 +4,15 @@ image: manuel_pardo.png
 about:
   template: jolla
   links:
-    - icon: twitter
-      text: Twitter
-      href: https://twitter.com
+    - icon: clockicon.png
+      text: Resume
+      href: posts/resume.pdf
     - icon: linkedin
       text: LinkedIn
-      href: https://linkedin.com
+      href: https://linkedin.com/ln/mannypardo
     - icon: github
       text: Github
-      href: https://github.com
+      href: https://github.com/the-learning-mechanic.com
 
 ---
 

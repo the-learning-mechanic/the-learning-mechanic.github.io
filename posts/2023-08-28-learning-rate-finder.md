@@ -1,13 +1,14 @@
 ---
 layout: post
 title: Learning Rate Finder and Annealing
+author: Manuel Pardo
 date: "2023-09-02"
 description: Simulated Annealing using Fast AI with an example using cosine.
 imgage: mcescher.jpg # Add image post (optional)
 fig-caption: # Add figcaption (optional)
 tags: [FastAI, Annealing, Learning Rate]
 ---
-[![Caption](mcescher.jpg)]("")
+[![Relativaty by MC Escher](mcescher.jpg)]("")
 
 ## Introduction
 Simulated annealing is a global optimization technique that has been widely used in various fields, including physics, chemistry, and engineering. It is particularly useful when dealing with complex systems where traditional optimization methods may fail to converge or produce suboptimal solutions. In machine learning, simulated annealing can be applied to optimize hyperparameters of models, leading to better model performance and generalization.

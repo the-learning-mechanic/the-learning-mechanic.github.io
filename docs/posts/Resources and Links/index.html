@@ -7,10 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Manuel Pardo">
-<meta name="dcterms.date" content="2023-09-02">
-<meta name="description" content="Simulated Annealing using Fast AI with an example using cosine.">
+<meta name="dcterms.date" content="2023-08-30">
 
-<title>Manuel Pardo - Learning Rate Finder and Annealing</title>
+<title>Manuel Pardo - Welcome To My Blog</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -114,13 +113,11 @@ ul.task-list li input[type="checkbox"] {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Learning Rate Finder and Annealing</h1>
-                  <div>
-        <div class="description">
-          Simulated Annealing using Fast AI with an example using cosine.
-        </div>
-      </div>
-                </div>
+      <h1 class="title">Welcome To My Blog</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">news</div>
+              </div>
+                  </div>
   </div>
     
   
@@ -136,7 +133,7 @@ ul.task-list li input[type="checkbox"] {
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">September 2, 2023</p>
+        <p class="date">August 30, 2023</p>
       </div>
     </div>
     
@@ -154,94 +151,11 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><a href="&quot;&quot;"><img src="mcescher.jpg" class="img-fluid figure-img"></a></p>
-<figcaption class="figure-caption">Relativaty by MC Escher</figcaption>
-</figure>
-</div>
-<section id="introduction" class="level2">
-<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
-<p>Simulated annealing is a global optimization technique that has been widely used in various fields, including physics, chemistry, and engineering. It is particularly useful when dealing with complex systems where traditional optimization methods may fail to converge or produce suboptimal solutions. In machine learning, simulated annealing can be applied to optimize hyperparameters of models, leading to better model performance and generalization.</p>
-<p>In this article, we will explore how to use simulated annealing in machine learning using FastAI’s libraries. We will start by discussing the basics of simulated annealing and its application in machine learning. Then, we will provide step-by-step instructions on how to implement simulated annealing using FastAI’s libraries in Python. Finally, we will demonstrate the effectiveness of simulated annealing in optimizing hyperparameters of a simple neural network.</p>
-<p>You can learn more about the amazing work FastAI does in pedogogy of machine learning while makeing signifant contributions to AI at <a href="https://www.fast.ai/">Fast.AI</a>. I encourage you to learn more about what Jeremy is upto and as a current student, join me on this learning journey by goin to <a href="https://course19.fast.ai/index.html">Practical Deep Learning for Coders</a>.</p>
-<section id="what-is-simulated-annealing" class="level4">
-<h4 class="anchored" data-anchor-id="what-is-simulated-annealing">What is Simulated Annealing?</h4>
-<p>Simulated annealing is a <a href="https://en.wikipedia.org/wiki/Stochastic_gradient_descent">stochastic optimization</a> algorithm inspired by the process of annealing in metallurgy. The basic idea is to start with an initial solution and iteratively perturb the solution while gradually reducing the magnitude of the perturbations over time. This process mimics the cooling process in annealing, where the atoms in a material slowly move towards their more stable equilibrium positions as the temperature decreases.</p>
-<p>The key feature of simulated annealing is the “annealing schedule,” which controls the rate at which the perturbation size is reduced during the optimization process. A well-designed annealing schedule can help ensure that the optimization process converges to the global minimum of the objective function.</p>
-</section>
-</section>
-<section id="applications-of-simulated-annealing-in-machine-learning" class="level2">
-<h2 class="anchored" data-anchor-id="applications-of-simulated-annealing-in-machine-learning">Applications of Simulated Annealing in Machine Learning</h2>
-<p>Simulated annealing has several applications in machine learning, including:</p>
-<section id="hyperparameter-optimization" class="level4">
-<h4 class="anchored" data-anchor-id="hyperparameter-optimization">Hyperparameter Optimization</h4>
-<p>One of the most common applications of simulated annealing in machine learning is hyperparameter optimization. Hyperparameters are parameters that are set before training a model, such as learning rate, regularization strength, and number of hidden layers. In our metalurgy example-think of preseting the max temperature, scale of temperature change, rate of temperature decrease, amount of material. These parameters have a significant impact on the performance of the model, but finding the optimal values can be challenging due to the complexity of the search space. Simulated annealing can be used to efficiently explore the hyperparameter space and find good solutions.</p>
-</section>
-<section id="neural-network-architecture-search" class="level4">
-<h4 class="anchored" data-anchor-id="neural-network-architecture-search">Neural Network Architecture Search</h4>
-<p>Another application of simulated annealing in machine learning is neural network architecture search. The architecture of a neural network, such as the number of layers, layer sizes, and connections between layers, plays a crucial role in determining the model’s ability to fit the data. Simulated annealing can be used to search for the best architecture among all possible combinations.</p>
-</section>
-<section id="model-selection" class="level4">
-<h4 class="anchored" data-anchor-id="model-selection">Model Selection</h4>
-<p>Simulated annealing can also be used for model selection, where the goal is to choose the best model from a set of candidate models. Each model has its own set of hyperparameters, and simulated annealing can be used to find the optimal values for each model.</p>
-</section>
-<section id="simulated-annealing-algorithms-built-into-pytorch" class="level4">
-<h4 class="anchored" data-anchor-id="simulated-annealing-algorithms-built-into-pytorch">Simulated Annealing Algorithms Built into Pytorch</h4>
-<p>PyTorch provides several built-in functions for performing annealing during training. These functions allow you to gradually adjust hyperparameters over time, which can help improve the stability and convergence of your models. Some commonly used annealing functions in PyTorch include:</p>
-<section id="torch.optim.lr_scheduler.steplr" class="level6">
-<h6 class="anchored" data-anchor-id="torch.optim.lr_scheduler.steplr">torch.optim.lr_scheduler.StepLR:</h6>
-<p>This scheduler reduces the learning rate of each parameter group by a factor at each step. You specify the reduction factor and the interval between steps. For example, if you want to reduce the learning rate by half every 10 epochs, you would call StepLR(optimizer, step_size=10, gamma=0.5). ###### torch.optim.lr_scheduler.MultiStepLR:<br>
-Similar to StepLR, but allows you to specify multiple milestone steps at which the learning rate should be reduced. For example, if you want to reduce the learning rate by half after 10 epochs and then again after 20 epochs, you would call MultiStepLR(optimizer, milestones=[10, 20], gamma=0.5). ###### torch.optim.lr_scheduler.ExponentialLR:<br>
-Reduces the learning rate exponentially based on a fixed schedule. You specify the decay rate and the interval between updates. For example, if you want to halve the learning rate every 10 epochs, you would call ExponentialLR(optimizer, decay_rate=0.9, update_interval=10). ##### torch.optim.lr_scheduler.CosineAnnealingLR:<br>
-Gradually reduces the learning rate over a specified number of iterations. At each iteration, the learning rate is updated according to the formula learning_rate = base_learning_rate * (1 + cos(iterations / max_iterations)). For example, if you want to reduce the learning rate linearly over 100 iterations, you would call CosineAnnealingLR(optimizer, max_iterations=100). ###### torch.optim.lr_scheduler.ReduceLROnPlateau:<br>
-Reduces the learning rate when a metric stops improving. You specify the monitored quantity, the threshold for improvement, and the factor by which the learning rate should be reduced. For example, if you want to reduce the learning rate by half when validation loss fails to improve for 10 consecutive epochs, you would call ReduceLROnPlateau(optimizer, mode=‘min’, factor=0.5, patience=10).</p>
-<p>These are just a few examples of the annealing functions available in PyTorch. There are also other customizable options, such as torch.optim.lr_scheduler.LambdaLR, which allows you to define a custom annealing schedule using a lambda function.</p>
-</section>
-</section>
-<section id="how-to-implement-simulated-annealing-in-fastai" class="level4">
-<h4 class="anchored" data-anchor-id="how-to-implement-simulated-annealing-in-fastai">How to Implement Simulated Annealing in FastAI</h4>
-<p>The FastAI framework is highly integrated with the PyTorch library allowing you to incorporate many of the models and functions and learn more about FastAI by going to their <a href="https://pytorch.org/">documents page</a>.</p>
-<p>Step 1: Install FastAI using the instructions: You can use the FastAI library directly from google Colab or First, choose your go forward method of installation via Git, Conda, or pip:<br>
-<a href="https://docs.fast.ai/">FastAI</a> From a jupyter or colab notebook environment you can install them directly by typing: <code>!pip install fastai</code></p>
-<p>Step 2: Import Libraries We will use NumPy for array operations and FastAI’s optimize library for implementing simulated annealing.</p>
-<pre><code>import numpy as np
-from fastai.optimize import *</code></pre>
-<p>Step 3: Define Objective Function Define the objective function that you want to minimize. For example, let’s consider a simple neural network with one input layer, one output layer, and no hidden layers. The objective function could be the mean squared error (MSE) between the predicted outputs and the true labels.</p>
-<pre><code>class TrainLearner(Learner):
-    def predict(self): self.preds = self.model(self.batch[0])
-    def get_loss(self): self.loss = self.loss_func(self.preds, self.batch[1])
-    def backward(self): self.loss.backward()
-    def step(self): self.opt.step()
-    def zero_grad(self): self.opt.zero_grad()</code></pre>
-<p>Here, TrainLearner is a custom class that defines the neural network architecture, and predict() and get_loss() are functions that perform forward pass and backward pass through the network, respectively.</p>
-<p>Step 4: Define Annealing Schedule Next, define the annealing schedule. The annealing schedule should specify the starting temperature, ending temperature, and the reduction factor for each iteration. Here’s an example:</p>
-<p>start_temp = 1000 end_temp = 1e-6 reduction_factor = 0.95 schedule = np.linspace(start_temp, end_temp, num_iterations) ** reduction_factor This schedule starts with a high temperature (start_temp) and reduces it exponentially until reaching a low temperature (end_temp). The reduction factor (reduction_factor) controls the rate at which the temperature is reduced.</p>
-<p>Step 5: Run Simulated Annealing Finally, run the simulated annealing algorithm. Here’s some sample code:</p>
-</section>
-</section>
-<section id="initialize-current-state-and-energy" class="level1">
-<h1>Initialize current state and energy</h1>
-<p>current_state = np.random.randn(784) current_energy = objective_function(current_state)</p>
-</section>
-<section id="iterate-over-annealing-schedule" class="level1">
-<h1>Iterate over annealing schedule</h1>
-<p>for temp in schedule: # Propose new state proposed_state = current_state + np.random.normal(size=(784)) proposed_energy = objective_function(proposed_state)</p>
-<pre><code># Acceptance probability
-acceptance_probability = min(1, np.exp(-(proposed_energy - current_energy) / temp))
-
-# Update current state if accepted
-if np.random.uniform(0, 1) &lt; acceptance_probability:
-    current_state = proposed_state
-    current_energy = proposed_energy
-    </code></pre>
-<p>print(“Final state:”, current_state) print(“Final energy:”, current_energy) This code runs the simulated annealing algorithm for a fixed number of iterations specified by num_iterations. At each iteration, it proposes a new state based on the current state and evaluates the corresponding energy. If the proposed state is accepted according to the Metropolis criterion, the current state is updated. Otherwise, the current state remains unchanged.</p>
-<p>Results Let’s apply simulated annealing to optimize the hyperparameters of a simple neural network. We will use the MNIST dataset, which consists of handwritten digits images. Our goal is to achieve a test accuracy of at least 90%.</p>
-<p>Here are the results after running simulated annealing for 100 iterations:</p>
-<p>Final state: [0.001, 0.002, 0.003, …, 0.001] Final energy: 0.000123456789 Test accuracy: 92% As expected, the final state corresponds to the optimized hyperparameters, and the test accuracy is close to 90%. Note that the actual results may vary depending on the specific implementation details and random initialization.</p>
+<p>This is the first post in a Quarto blog. Welcome!</p>
+<p><img src="thumbnail.jpg" class="img-fluid"></p>
+<p>Since this post doesn’t specify an explicit <code>image</code>, the first image in the post will be used in the listing page of posts.</p>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
