@@ -9,9 +9,9 @@
   {
     "objectID": "posts/Resources and Links/index.html",
     "href": "posts/Resources and Links/index.html",
-    "title": "Welcome To My Blog",
+    "title": "Resources and Links",
     "section": "",
-    "text": "This is the first post in a Quarto blog. Welcome!\n\nSince this post doesn’t specify an explicit image, the first image in the post will be used in the listing page of posts."
+    "text": "I’ll attepmt to keep the content and links as current as possible.\n\n\n\nStuttgart City Library\n\n\nMachine Learning Resources:\nMeta AI\nHuggingface\nPyTorch"
   },
   {
     "objectID": "posts/2023-08-28-learning-rate-finder.html",
@@ -39,7 +39,7 @@
     "href": "index.html",
     "title": "The Learning Mechanic",
     "section": "",
-    "text": "Cosine Annealing With a FastAI Learner\n\n\n\n\n\nImplementing a Cosine Annealer with the FastAI learner\n\n\n\n\n\n\nSep 5, 2023\n\n\nManuel Pardo\n\n\n\n\n\n\n  \n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nAug 30, 2023\n\n\nManuel Pardo\n\n\n\n\n\n\nNo matching items"
+    "text": "Cosine Annealing With a FastAI Learner\n\n\n\n\n\nImplementing a Cosine Annealer with the FastAI learner\n\n\n\n\n\n\nSep 5, 2023\n\n\nManuel Pardo\n\n\n\n\n\n\n  \n\n\n\n\nResources and Links\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nAug 30, 2023\n\n\nManuel Pardo\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "posts/2023-08-28- FastAI Cosine Annealer.html",

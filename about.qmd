@@ -4,8 +4,7 @@ image: manuel_pardo.png
 about:
   template: jolla
   links:
-    - icon: clockicon.png
-      text: Resume
+    - text: Resume
       href: Resume2023.html
     - icon: linkedin
       text: LinkedIn
