@@ -4,7 +4,7 @@
     "href": "about.html",
     "title": "About",
     "section": "",
-    "text": "Thank you for stopping by. This blog is my way of documenting my journey through the second semester of part 2 of the FastAI: Machine Learning for Coders\nI am a former product leader and owner at Microsoft, Blackberry, and Lucent. I hold a bachelor’s in Physics and a Master’s in Computer Science. My interest in machine learning started from learning to use numpy, pandas, and SQLAlchemy as a Developer Evangelist Lead at a Geo-Spatial and Analytics company. My curiosity led me to the courses at FastAI where after a couple of false starts I joined a study group as a way to learn and interact with others who share a similar interest in machine learning. The combination of my fondness for linear algebra and diff equations, accessibility of Python as a language, and last three years working as a Developer Evangelist at a GeoSpatial and Analytics Company is what motivated me to go through the FastAI course."
+    "text": "Thank you for stopping by. This blog is my way of documenting my journey through the second semester of part 2 of the FastAI: Machine Learning for Coders\nI’ve had a successful career as a product leader and owner at amazing companies like Microsoft, Blackberry, and Lucent. I hold a bachelor’s in Physics and a Master’s in Computer Science. Some of my more notable accomplishments were the first to launch a Garmin GPS-integrated smartphone; the 3600 Curve from Blackberry and the first to launch the 920 Lumia Windows Phone with Microsoft. I’ve had the privilege of supporting product, technical sales and business operations teams leading software and hardware launches. My interest in machine learning started from working with numpy, pandas, and SQLAlchemy as a Developer Evangelist Lead at a Geo-Spatial and Analytics company. My curiosity led me to the courses at FastAI where after a couple of false starts I joined a study group as a way to learn and interact with others who share a similar interest in machine learning. The combination of my fondness for linear algebra and diff equations, accessibility of Python as a language, and last three years working as a Developer Evangelist at a GeoSpatial and Analytics Company is what motivated me to go through the FastAI course."
   },
   {
     "objectID": "posts/Resources and Links/index.html",
@@ -39,6 +39,48 @@
     "href": "index.html",
     "title": "The Learning Mechanic",
     "section": "",
-    "text": "Learning Rate Finder and Annealing\n\n\n\n\n\nSimulated Annealing using Fast AI with an example using cosine.\n\n\n\n\n\n\nSep 2, 2023\n\n\nManuel Pardo\n\n\n\n\n\n\n  \n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nAug 30, 2023\n\n\nManuel Pardo\n\n\n\n\n\n\nNo matching items"
+    "text": "Cosine Annealing With a FastAI Learner\n\n\n\n\n\nImplementing a Cosine Annealer with the FastAI learner\n\n\n\n\n\n\nSep 5, 2023\n\n\nManuel Pardo\n\n\n\n\n\n\n  \n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nAug 30, 2023\n\n\nManuel Pardo\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "posts/2023-08-28- FastAI Cosine Annealer.html",
+    "href": "posts/2023-08-28- FastAI Cosine Annealer.html",
+    "title": "Cosine Annealing With a FastAI Learner",
+    "section": "",
+    "text": "Relativaty by MC Escher"
+  },
+  {
+    "objectID": "posts/2023-08-28- FastAI Cosine Annealer.html#cosine-annealing",
+    "href": "posts/2023-08-28- FastAI Cosine Annealer.html#cosine-annealing",
+    "title": "Cosine Annealing With a FastAI Learner",
+    "section": "Cosine Annealing",
+    "text": "Cosine Annealing\nOne popular variant of simulated annealing is cosine annealing. Instead of decreasing the learning rate linearly over time, cosine annealing uses a cosine function to gradually reduce the learning rate. This allows the model to slow down its descent into the optimum and helps prevent getting stuck in local minima.\nHere’s the formula for cosine annealing:\n\\[\nCurrentLF = StartingRate * (Maxixum(cos(pi * (1 - CurrentSteps/TotalSteps)))\n\\]\nwhere StartingRate is the initial learning rate, CurrentLF is the learning rate calcuated at the CurrentSteps, and TotalSteps is the total number of steps."
+  },
+  {
+    "objectID": "posts/2023-08-28- FastAI Cosine Annealer.html#implementing-cosine-annealing-in-fastai",
+    "href": "posts/2023-08-28- FastAI Cosine Annealer.html#implementing-cosine-annealing-in-fastai",
+    "title": "Cosine Annealing With a FastAI Learner",
+    "section": "Implementing Cosine Annealing in FastAI",
+    "text": "Implementing Cosine Annealing in FastAI\nTo incorporate cosine annealing into our FastAI workflow, we’ll extend the LRFinder class and add a new method called cosine_annealing. Here’s the updated code:\nclass LRFinderCB(Callback):\n    def __init__(self, lr_mult=1.3):\n        super().__init__()\n        self.lr_mult = lr_mult\n        self.cosine_annealing = False \n\n    def before_fit(self, learner):\n        self.lrs, self.losses = [], []\n        self.min = math.inf\n\n    def after_batch(self, learner):\n        if not learner.training:\n            raise CancelEpochException()\n\n        self.lrs.append(learner.opt.param_groups[0]['lr'])\n        loss = to_cpu(learner.loss)\n        self.losses.append(loss)\n        if loss &lt; self.min:\n            self.min = loss\n\n        if self.cosine_annealing:\n            learning_rate = self.lr_mult * max(cos(pi * (1 - len(self.lrs) / len(self.losses))), 0.5)\n            for g in learner.opt.param_groups:\n                g['lr'] = learning_rate\n\nclass Metric:\n    def __init__(self):\n        self.reset()\n\n    def reset(self):\n        self.vals, self.ns = [], []\n\n    def add(self, inp, targ=None, n=1):\n        self.last = self.calc(inp, targ)\n        self.vals.append(self.last)\n        self.ns.append(n)\n\n    @property\n    def value(self):\n        ns = tensor(self.ns)\n        return (tensor(self.vals) * ns).sum() / ns.sum()\n\n    def calc(self, inps, targs):\n        return (inps == targs).float().mean()\n\nclass Accuracy(Metric):\n    def calc(self, inps, targs):\n        return (inps == targs).float().mean()\nNow, when we initialize the LRFinderCB object, we can pass cosine_annealing=True to enable cosine annealing. The cosine_annealing method will update the learning rate according to the cosine annealing formula."
+  },
+  {
+    "objectID": "posts/2023-08-28- FastAI Cosine Annealer.html#using-the-metric-class-to-calculate-accuracy",
+    "href": "posts/2023-08-28- FastAI Cosine Annealer.html#using-the-metric-class-to-calculate-accuracy",
+    "title": "Cosine Annealing With a FastAI Learner",
+    "section": "Using the Metric Class to Calculate Accuracy",
+    "text": "Using the Metric Class to Calculate Accuracy\nTo calculate accuracy during training, we can use the Metric class provided by FastAI. This class allows us to compute a metric over a dataset and print it out at each epoch.\nWe’ll create a custom accuracy metric that calculates the accuracy of our model on the validation set. Here’s how to do it:\nfrom fastai import metrics\nclass Accuracy(metrics.Metric):\n    def __init__(self):\n        super().__init__()\n        self.correct = 0\n        self.total = 0\n\n    def add(self, pred, true):\n        self.correct += (pred == true).sum().item()\n        self.total += pred.size(0)\n\n    def value(self):\n        return self.correct / self.total\nThis metric class takes in two tensors, pred and true, which represent the predicted outputs and the true labels, respectively. It then computes the accuracy by counting the number of correctly predicted samples and dividing it by the total number of samples.\nWe can now register this metric with FastAI’s CallbackList to get the accuracy at each epoch:\nfrom fastai.callbacks import CallbackList\n\ncb_list = CallbackList()\ncb_list.insert(Accuracy())\nWith this callback list, FastAI will call the Accuracy metric at each epoch and print out the accuracy."
+  },
+  {
+    "objectID": "posts/2023-08-28- FastAI Cosine Annealer.html#putting-everything-together",
+    "href": "posts/2023-08-28- FastAI Cosine Annealer.html#putting-everything-together",
+    "title": "Cosine Annealing With a FastAI Learner",
+    "section": "Putting Everything Together",
+    "text": "Putting Everything Together\nNow that we have all the necessary components, let’s put them together to create a complete FastAI training loop with cosine annealing and accuracy calculation:\nfrom fastai import TrainLoop\n\ntrain_loop = TrainLoop(model=model,\n                     dataloader=dataloader,\n                     optimizer=optimizer,\n                     loss_fn=loss_fn,\n                     metrics=[Accuracy()],\n                     callbacks=[cb_list],\n                     device=\"cuda\")\ntrain_loop.train(num_epochs=10)\nThis training loop will train the model for 10 epochs, computing the accuracy at each epoch using the Accuracy metric and updating the learning rate using cosine annealing.\nAnd that’s it! With these few lines of code, you’ve implemented a powerful training loop that leverages the flexibility and ease of use of FastAI.\nConclusion In this tutorial, we learned how to implement cosine annealing and accuracy calculation in a FastAI training loop. By extending the LRFinder class and creating a custom Accuracy metric, we were able to create a complete training loop that adapts the learning rate during training and prints out the accuracy at each epoch.\nWith this knowledge, you can now apply these techniques to your own deep learning projects and improve the performance of your models. Happy coding!"
+  },
+  {
+    "objectID": "posts/2023-08-28- FastAI Cosine Annealer.html#conclusion",
+    "href": "posts/2023-08-28- FastAI Cosine Annealer.html#conclusion",
+    "title": "Cosine Annealing With a FastAI Learner",
+    "section": "Conclusion",
+    "text": "Conclusion\nIn this tutorial, we learned how to implement cosine annealing and accuracy calculation in a FastAI training loop. By extending the LRFinder class and creating a custom Accuracy metric, we were able to create a complete training loop that adapts the learning rate during training and prints out the accuracy at each epoch.\nWith this knowledge, you can now apply these techniques to your own deep learning projects and improve the performance of your models. Happy coding!"
   }
 ]
