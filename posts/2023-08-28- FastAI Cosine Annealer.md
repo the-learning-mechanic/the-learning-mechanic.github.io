@@ -9,7 +9,7 @@ imgage: mcescher.jpg # Add image post (optional)
 fig-caption: # Add figcaption (optional)
 tags: [FastAI, Annealing, Learning Rate]
 ---
-[![Relativaty by MC Escher](mcescher.jpg)]("")
+[![Relativity by MC Escher](mcescher.jpg)]("")
 
 
 # Simulated Annealing Using FastAI Libraries
@@ -36,29 +36,27 @@ To incorporate cosine annealing into our FastAI workflow, we'll extend the LRFin
    
 ```
 class LRFinderCB(Callback):
-    def __init__(self, lr_mult=1.3):
-        super().__init__()
-        self.lr_mult = lr_mult
-        self.cosine_annealing = False 
-
-    def before_fit(self, learner):
-        self.lrs, self.losses = [], []
+    def __init__(self, lr_mult=1.3): 
+        fc.store_attr()
+        # print('c_iter', 't_iter', '      loss ', '     ', '   min', '               g[\'lr\']', '          c_factor')
+    def before_fit(self, learn):
+        self.epochs, self.lrs,self.losses = [],[], []
         self.min = math.inf
+        self.t_iter = len(learn.dls.train) * learn.n_epochs #total number of iteration
 
-    def after_batch(self, learner):
-        if not learner.training:
-            raise CancelEpochException()
-
-        self.lrs.append(learner.opt.param_groups[0]['lr'])
-        loss = to_cpu(learner.loss)
+    def after_batch(self, learn):
+        if not learn.training: raise CancelEpochException()
+        #iteration =  # current iteration
+        self.lrs.append(learn.opt.param_groups[0]['lr'])
+        loss = to_cpu(learn.loss)
+        c_iter = learn.iter
         self.losses.append(loss)
-        if loss < self.min:
-            self.min = loss
-
-        if self.cosine_annealing:
-            learning_rate = self.lr_mult * max(cos(pi * (1 - len(self.lrs) / len(self.losses))), 0.5)
-            for g in learner.opt.param_groups:
-                g['lr'] = learning_rate
+        self.epochs.append(c_iter)
+        if loss < self.min: self.min = loss
+        if loss > self.min*2: raise CancelFitException()
+        for g in learn.opt.param_groups: 
+            g['lr'] *= self.lr_mult
+        g['lr'] = g['lr']*abs(.4*(math.cos(2.0*c_iter / self.t_iter * math.pi)))
 ```
 The Metric class is used to calculate how far our predictions will be from the targets. 
 ```
@@ -91,24 +89,28 @@ Now, when we initialize the LRFinderCB object, we can pass cosine_annealing=True
 ### Using the Metric Class to Calculate Accuracy
 To calculate accuracy during training, we can use the Metric class provided by FastAI. This class allows us to compute a metric over a dataset and print it out at each epoch.
 
-We'll create a custom accuracy metric that calculates the accuracy of our model on the validation set. Here's how to do it:
+We'll create a custom accuracy `Metric` class that calculates the accuracy of our model on the validation set by comparing how far appart our predictions are from the validation values. Here's how to do it:
 
-from fastai import metrics
 ```
-class Accuracy(metrics.Metric):
-    def __init__(self):
-        super().__init__()
-        self.correct = 0
-        self.total = 0
-
-    def add(self, pred, true):
-        self.correct += (pred == true).sum().item()
-        self.total += pred.size(0)
-
+class Metric:
+    def __init__(self): self.reset()
+    def reset(self): self.vals,self.ns = [],[]
+    def add(self, inp, targ=None, n=1):
+        self.last = self.calc(inp, targ)
+        self.vals.append(self.last)
+        self.ns.append(n)
+    @property
     def value(self):
-        return self.correct / self.total
+        ns = tensor(self.ns)
+        return (tensor(self.vals)*ns).sum()/ns.sum()
+    def calc(self, inps, targs): return inps
 ```
-This metric class takes in two tensors, pred and true, which represent the predicted outputs and the true labels, respectively. It then computes the accuracy by counting the number of correctly predicted samples and dividing it by the total number of samples.
+We make the class callable by creating a function called `Accuracy(Metric)`
+Accuracy takes in two tensors, pred and validate, which represent the predicted outputs and the true labels, respectively. It then computes the accuracy by counting the number of correctly predicted samples and dividing it by the total number of samples.
+```
+class Accuracy(Metric):
+    def calc(self, inps, targs): return (inps==targs).float().mean()
+```
 
 We can now register this metric with FastAI's CallbackList to get the accuracy at each epoch:
 

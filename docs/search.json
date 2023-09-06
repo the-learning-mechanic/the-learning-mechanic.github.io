@@ -11,7 +11,7 @@
     "href": "posts/Resources and Links/index.html",
     "title": "Resources and Links",
     "section": "",
-    "text": "I’ll attepmt to keep the content and links as current as possible.\n\n\n\nStuttgart City Library\n\n\nMachine Learning Resources:\nMeta AI\nHuggingface\nPyTorch"
+    "text": "I’ll attempt to keep the content and links as current as possible.\n\n\n\nStuttgart City Library\n\n\n\nMachine Learning Resources:\nFastAI\nMeta AI\nHuggingface\nPyTorch\nPapers With Code\nQuarto"
   },
   {
     "objectID": "posts/2023-08-28-learning-rate-finder.html",
@@ -46,7 +46,7 @@
     "href": "posts/2023-08-28- FastAI Cosine Annealer.html",
     "title": "Cosine Annealing With a FastAI Learner",
     "section": "",
-    "text": "Relativaty by MC Escher"
+    "text": "Relativity by MC Escher"
   },
   {
     "objectID": "posts/2023-08-28- FastAI Cosine Annealer.html#cosine-annealing",
