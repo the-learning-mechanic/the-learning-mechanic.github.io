@@ -1,6 +1,8 @@
 ---
 layout: post
 title: Cosine Annealing With a FastAI Learner
+resource-path: 
+  - '/assets/'
 author: Manuel Pardo
 date: "2023-09-05"
 code-copy: True
@@ -9,7 +11,7 @@ imgage: mcescher.jpg # Add image post (optional)
 fig-caption: # Add figcaption (optional)
 tags: [FastAI, Annealing, Learning Rate]
 ---
-[![Relativity by MC Escher](mcescher.jpg)]("")
+[![Relativity by MC Escher](./mcescher.jpg)
 
 # Simulated Annealing Using FastAI Libraries
 In this blog post, we'll explore how to use simulated annealing to optimize the learning rate schedule for deep neural network training using FastAI libraries. We'll extend the LRFinder class to include cosine annealing and use the Metric class to calculate accuracy during training.
@@ -151,7 +153,7 @@ Let's start by looking at our loss and learning rates with the momentum learner 
 
 
 {{< embed FastAIlearner.ipynb#epoch-lr >}}
-
+posts/2023-08-28- FastAI Cosine Annealer/assets
 In Figure 2 we see that the loss is minimized at approximately the 47th epoch.
 {{< embed FastAIlearner.ipynb#loss-epoch >}}
 
