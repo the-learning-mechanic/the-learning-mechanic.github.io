@@ -1,12 +1,5 @@
 [
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
-    "section": "",
-    "text": "Thank you for stopping by. This blog is my way of documenting my journey through the second semester of part 2 of the FastAI: Machine Learning for Coders\nI’ve had a successful career as a product leader and owner at amazing companies like Microsoft, Blackberry, and Lucent. I hold a bachelor’s in Physics and a Master’s in Computer Science. Some of my more notable accomplishments were the first to launch a Garmin GPS-integrated smartphone; the 3600 Curve from Blackberry and the first to launch the 920 Lumia Windows Phone with Microsoft. I’ve had the privilege of supporting product, technical sales and business operations teams leading software and hardware launches. My interest in machine learning started from working with numpy, pandas, and SQLAlchemy as a Developer Evangelist Lead at a Geo-Spatial and Analytics company. My curiosity led me to the courses at FastAI where after a couple of false starts I joined a study group as a way to learn and interact with others who share a similar interest in machine learning. The combination of my fondness for linear algebra and diff equations, accessibility of Python as a language, and last three years working as a Developer Evangelist at a GeoSpatial and Analytics Company is what motivated me to go through the FastAI course."
-  },
-  {
     "objectID": "posts/Annealer/FastAIlearner.html",
     "href": "posts/Annealer/FastAIlearner.html",
     "title": "Learner",
@@ -61,20 +54,6 @@
     "title": "Resources and Links",
     "section": "",
     "text": "I’ll attempt to keep the content and links as current as possible.\n\n\n\nStuttgart City Library\n\n\n\nMachine Learning Resources:\nFastAI\nMeta AI\nHuggingface\nPyTorch\nPapers With Code\nQuarto"
-  },
-  {
-    "objectID": "posts/Annealer/2023-08-28- FastAI Cosine Annealer.html",
-    "href": "posts/Annealer/2023-08-28- FastAI Cosine Annealer.html",
-    "title": "Cosine Annealing With a FastAI Learner",
-    "section": "",
-    "text": "Relativity by MC Escher"
-  },
-  {
-    "objectID": "posts/Annealer/2023-08-28- FastAI Cosine Annealer.html#conclusion",
-    "href": "posts/Annealer/2023-08-28- FastAI Cosine Annealer.html#conclusion",
-    "title": "Cosine Annealing With a FastAI Learner",
-    "section": "Conclusion",
-    "text": "Conclusion\nIn this tutorial, we learned how to implement cosine annealing and accuracy calculation in a FastAI training loop. By extending the LRFinder class and creating a custom Accuracy metric, we were able to create a complete training loop that adapts the learning rate during training and prints out the accuracy at each epoch.\nWith this knowledge, you can now apply these techniques to your own deep-learning projects and improve the performance of your models."
   },
   {
     "objectID": "index.html",
