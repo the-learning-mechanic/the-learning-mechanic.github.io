@@ -11,7 +11,7 @@ about:
       href: https://linkedin.com/ln/mannypardo
     - icon: github
       text: Github
-      href: https://github.com/the-learning-mechanic.com
+      href: https://github.com/the-learning-mechanic
 
 ---
 
