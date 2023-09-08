@@ -289,7 +289,21 @@ def zero_grad(self, learn): learn.opt.zero_grad()</code></pre>
 </div>
 <a class="quarto-notebook-link" id="nblink-1" href="FastAIlearner.ipynb.html">Source: FastAIlearner.ipynb</a></div>
 <p>In Figure 2 we see that the loss is minimized at approximately the 47th epoch.</p>
-<p>Let’s add a cosine factor so that the learning rate is forced over a smooth 1 to 0 set of factors. Figure 3 demonstrates how the learning rate is smoothly ramped up from zero after the 13th epoch which is an improvement over the 25 we achieve without annealing.</p>
+<div class="quarto-embed-nb-cell">
+<div class="cell" data-execution_count="51">
+<div class="cell-output cell-output-display">
+<div id="loss-epoch" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="2023-08-28- FastAI Cosine Annealer_files/figure-html/loss-epoch-output-1.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Fig 2 - Learning Rate Cosine Annealer</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<a class="quarto-notebook-link" id="nblink-2" href="FastAIlearner.ipynb.html">Source: FastAIlearner.ipynb</a></div>
+<p>Let’s add a cosine factor<br>
+<code>max(np.cos((1-4.0*np.pi*(c_iter / self.t_iter))),1.0)</code><br>
+so that the learning rate is forced over a smooth 1 to 0 set of factors. Figure 3 demonstrates how the learning rate is smoothly ramped up from zero after the 13th epoch which is an improvement over the 25 we achieve without annealing.</p>
 <div class="quarto-embed-nb-cell">
 <div class="cell" data-execution_count="77">
 <div class="cell-output cell-output-display">
@@ -301,7 +315,7 @@ def zero_grad(self, learn): learn.opt.zero_grad()</code></pre>
 </div>
 </div>
 </div>
-<a class="quarto-notebook-link" id="nblink-2" href="FastAIlearner.ipynb.html">Source: FastAIlearner.ipynb</a></div>
+<a class="quarto-notebook-link" id="nblink-3" href="FastAIlearner.ipynb.html">Source: FastAIlearner.ipynb</a></div>
 <p>Looking at Figure 4 we can see a further improvement in finding the minimum loss at the 20th epoch which is less than half as many passes as needed without it.</p>
 <div class="quarto-embed-nb-cell">
 <div class="cell" data-execution_count="78">
@@ -314,7 +328,7 @@ def zero_grad(self, learn): learn.opt.zero_grad()</code></pre>
 </div>
 </div>
 </div>
-<a class="quarto-notebook-link" id="nblink-3" href="FastAIlearner.ipynb.html">Source: FastAIlearner.ipynb</a></div>
+<a class="quarto-notebook-link" id="nblink-4" href="FastAIlearner.ipynb.html">Source: FastAIlearner.ipynb</a></div>
 <p>And that’s it! With these few lines of code, you’ve implemented a powerful annealing function and integrated it into the FastAI learner.</p>
 </section>
 <section id="conclusion" class="level2">

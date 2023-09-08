@@ -163,24 +163,21 @@ Let's start by looking at our loss and learning rates with the momentum learner 
 
 {{< embed FastAIlearner.ipynb#epoch-lr >}}
 
-
 In Figure 2 we see that the loss is minimized at approximately the 47th epoch.
+{{< embed FastAIlearner.ipynb#loss-epoch >}}
 
-
-Let's add a cosine factor so that the learning rate is forced over a smooth 1 to 0 set of factors.
+Let's add a cosine factor   
+`max(np.cos((1-4.0*np.pi*(c_iter / self.t_iter))),1.0)`  
+so that the learning rate is forced over a smooth 1 to 0 set of factors.
 Figure 3 demonstrates how the learning rate is smoothly ramped up from zero after the 13th epoch which is an improvement over the 25 we achieve without annealing.
-
 
 {{< embed FastAIlearner.ipynb#cos-epoch-lr >}}
 
-
 Looking at Figure 4 we can see a further improvement in finding the minimum loss at the 20th epoch which is less than half as many passes as needed without it.
 
-
 {{< embed FastAIlearner.ipynb#cos-loss-epoch >}}
+
 And that's it! With these few lines of code, you've implemented a powerful annealing function and integrated it into the FastAI learner.
-
-
 
 
 ## Conclusion
