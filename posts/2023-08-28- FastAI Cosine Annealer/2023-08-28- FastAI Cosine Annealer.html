@@ -154,14 +154,14 @@ ul.task-list li input[type="checkbox"] {
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         
-    <div class="quarto-alternate-notebooks"><h2>Notebooks</h2><ul><li><a href="assets/FastAIlearner.ipynb.html"><i class="bi bi-journal-code"></i>FastAIlearner.ipynb</a></li></ul></div></div>
+    <div class="quarto-alternate-notebooks"><h2>Notebooks</h2><ul><li><a href="FastAIlearner.ipynb.html"><i class="bi bi-journal-code"></i>FastAIlearner.ipynb</a></li></ul></div></div>
 <!-- main -->
 <main class="content quarto-banner-title-block" id="quarto-document-content">
 
 
 
 
-<p>[<img src="assets/mcescher.jpg" class="img-fluid" alt="Relativity by MC Escher"></p>
+<p>[<img src="./mcescher.jpg" class="img-fluid" alt="Relativity by MC Escher"></p>
 <section id="simulated-annealing-using-fastai-libraries" class="level1">
 <h1>Simulated Annealing Using FastAI Libraries</h1>
 <p>In this blog post, we’ll explore how to use simulated annealing to optimize the learning rate schedule for deep neural network training using FastAI libraries. We’ll extend the LRFinder class to include cosine annealing and use the Metric class to calculate accuracy during training.</p>
@@ -282,8 +282,8 @@ def zero_grad(self, learn): learn.opt.zero_grad()</code></pre>
 </div>
 </div>
 </div>
-<a class="quarto-notebook-link" id="nblink-1" href="assets/FastAIlearner.ipynb.html">Source: FastAIlearner.ipynb</a></div>
-<p>In Figure 2 we see that the loss is minimized at approximately the 47th epoch.</p>
+<a class="quarto-notebook-link" id="nblink-1" href="FastAIlearner.ipynb.html">Source: FastAIlearner.ipynb</a></div>
+<p>posts/2023-08-28- FastAI Cosine Annealer/assets In Figure 2 we see that the loss is minimized at approximately the 47th epoch.</p>
 <div class="quarto-embed-nb-cell">
 <div class="cell" data-execution_count="51">
 <div class="cell-output cell-output-display">
@@ -295,7 +295,7 @@ def zero_grad(self, learn): learn.opt.zero_grad()</code></pre>
 </div>
 </div>
 </div>
-<a class="quarto-notebook-link" id="nblink-2" href="assets/FastAIlearner.ipynb.html">Source: FastAIlearner.ipynb</a></div>
+<a class="quarto-notebook-link" id="nblink-2" href="FastAIlearner.ipynb.html">Source: FastAIlearner.ipynb</a></div>
 <p>Let’s add a cosine factor:<br>
 <code>max(np.cos((1-4.0*np.pi*(c_iter / self.t_iter))),1.0)</code><br>
 so that the learning rate is forced over a smooth 1 to 0 set of factors.</p>
@@ -311,7 +311,7 @@ so that the learning rate is forced over a smooth 1 to 0 set of factors.</p>
 </div>
 </div>
 </div>
-<a class="quarto-notebook-link" id="nblink-3" href="assets/FastAIlearner.ipynb.html">Source: FastAIlearner.ipynb</a></div>
+<a class="quarto-notebook-link" id="nblink-3" href="FastAIlearner.ipynb.html">Source: FastAIlearner.ipynb</a></div>
 <p>Looking at Figure 4 we can see a further improvement in finding the minimum loss at the 20th epoch which is less than half as many passes as needed without it.</p>
 <div class="quarto-embed-nb-cell">
 <div class="cell" data-execution_count="78">
@@ -324,7 +324,7 @@ so that the learning rate is forced over a smooth 1 to 0 set of factors.</p>
 </div>
 </div>
 </div>
-<a class="quarto-notebook-link" id="nblink-4" href="assets/FastAIlearner.ipynb.html">Source: FastAIlearner.ipynb</a></div>
+<a class="quarto-notebook-link" id="nblink-4" href="FastAIlearner.ipynb.html">Source: FastAIlearner.ipynb</a></div>
 <p>And that’s it! With these few lines of code, you’ve implemented a powerful annealing function and integrated it into the FastAI learner.</p>
 </section>
 <section id="conclusion" class="level2">
