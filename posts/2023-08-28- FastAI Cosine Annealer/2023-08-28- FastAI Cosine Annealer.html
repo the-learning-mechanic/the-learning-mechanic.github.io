@@ -26,22 +26,22 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-html/quarto.js"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -69,7 +69,7 @@ ul.task-list li input[type="checkbox"] {
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
 <body class="nav-fixed">
@@ -79,7 +79,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
-    <a class="navbar-brand" href="../index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Manuel Pardo</span>
     </a>
   </div>
@@ -90,7 +90,7 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../about.html" rel="" target="">
+    <a class="nav-link" href="../../about.html" rel="" target="">
  <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item compact">
@@ -154,19 +154,14 @@ ul.task-list li input[type="checkbox"] {
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         
-    <div class="quarto-alternate-notebooks"><h2>Notebooks</h2><ul><li><a href="FastAIlearner.ipynb.html"><i class="bi bi-journal-code"></i>FastAIlearner.ipynb</a></li></ul></div></div>
+    <div class="quarto-alternate-notebooks"><h2>Notebooks</h2><ul><li><a href="assets/FastAIlearner.ipynb.html"><i class="bi bi-journal-code"></i>FastAIlearner.ipynb</a></li></ul></div></div>
 <!-- main -->
 <main class="content quarto-banner-title-block" id="quarto-document-content">
 
 
 
 
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><a href="&quot;&quot;"><img src="mcescher.jpg" class="img-fluid figure-img"></a></p>
-<figcaption class="figure-caption">Relativity by MC Escher</figcaption>
-</figure>
-</div>
+<p>[<img src="assets/mcescher.jpg" class="img-fluid" alt="Relativity by MC Escher"></p>
 <section id="simulated-annealing-using-fastai-libraries" class="level1">
 <h1>Simulated Annealing Using FastAI Libraries</h1>
 <p>In this blog post, we’ll explore how to use simulated annealing to optimize the learning rate schedule for deep neural network training using FastAI libraries. We’ll extend the LRFinder class to include cosine annealing and use the Metric class to calculate accuracy during training.</p>
@@ -287,7 +282,7 @@ def zero_grad(self, learn): learn.opt.zero_grad()</code></pre>
 </div>
 </div>
 </div>
-<a class="quarto-notebook-link" id="nblink-1" href="FastAIlearner.ipynb.html">Source: FastAIlearner.ipynb</a></div>
+<a class="quarto-notebook-link" id="nblink-1" href="assets/FastAIlearner.ipynb.html">Source: FastAIlearner.ipynb</a></div>
 <p>In Figure 2 we see that the loss is minimized at approximately the 47th epoch.</p>
 <div class="quarto-embed-nb-cell">
 <div class="cell" data-execution_count="51">
@@ -300,7 +295,7 @@ def zero_grad(self, learn): learn.opt.zero_grad()</code></pre>
 </div>
 </div>
 </div>
-<a class="quarto-notebook-link" id="nblink-2" href="FastAIlearner.ipynb.html">Source: FastAIlearner.ipynb</a></div>
+<a class="quarto-notebook-link" id="nblink-2" href="assets/FastAIlearner.ipynb.html">Source: FastAIlearner.ipynb</a></div>
 <p>Let’s add a cosine factor:<br>
 <code>max(np.cos((1-4.0*np.pi*(c_iter / self.t_iter))),1.0)</code><br>
 so that the learning rate is forced over a smooth 1 to 0 set of factors.</p>
@@ -316,7 +311,7 @@ so that the learning rate is forced over a smooth 1 to 0 set of factors.</p>
 </div>
 </div>
 </div>
-<a class="quarto-notebook-link" id="nblink-3" href="FastAIlearner.ipynb.html">Source: FastAIlearner.ipynb</a></div>
+<a class="quarto-notebook-link" id="nblink-3" href="assets/FastAIlearner.ipynb.html">Source: FastAIlearner.ipynb</a></div>
 <p>Looking at Figure 4 we can see a further improvement in finding the minimum loss at the 20th epoch which is less than half as many passes as needed without it.</p>
 <div class="quarto-embed-nb-cell">
 <div class="cell" data-execution_count="78">
@@ -329,7 +324,7 @@ so that the learning rate is forced over a smooth 1 to 0 set of factors.</p>
 </div>
 </div>
 </div>
-<a class="quarto-notebook-link" id="nblink-4" href="FastAIlearner.ipynb.html">Source: FastAIlearner.ipynb</a></div>
+<a class="quarto-notebook-link" id="nblink-4" href="assets/FastAIlearner.ipynb.html">Source: FastAIlearner.ipynb</a></div>
 <p>And that’s it! With these few lines of code, you’ve implemented a powerful annealing function and integrated it into the FastAI learner.</p>
 </section>
 <section id="conclusion" class="level2">
