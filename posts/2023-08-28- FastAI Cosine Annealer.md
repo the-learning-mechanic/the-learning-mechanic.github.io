@@ -11,33 +11,22 @@ tags: [FastAI, Annealing, Learning Rate]
 ---
 [![Relativity by MC Escher](mcescher.jpg)]("")
 
-
-
-
 # Simulated Annealing Using FastAI Libraries
 In this blog post, we'll explore how to use simulated annealing to optimize the learning rate schedule for deep neural network training using FastAI libraries. We'll extend the LRFinder class to include cosine annealing and use the Metric class to calculate accuracy during training.
-
-
-
 
 ### What is Simulated Annealing?
 Simulated annealing is a global optimization technique that uses a probabilistic approach to find the optimal solution for a given problem. It's inspired by the annealing process in metallurgy, where a material is heated and then cooled slowly to remove defects and achieve a more stable state.
 
-
 In the context of deep learning, simulated annealing can be used to optimize the learning rate schedule for a model. The idea is to start with an initial learning rate, gradually decrease it over time, and occasionally pause or "anneal" the learning process to allow the model to converge better.
-
 
 ### Cosine Annealing
 One popular variant of simulated annealing is cosine annealing. Instead of decreasing the learning rate linearly over time, cosine annealing uses a cosine function to gradually reduce the learning rate. This allows the model to slow down its descent into the optimum and helps prevent getting stuck in local minima.
 
-
 Here's the formula for cosine annealing:
-
 
 $$
 CurrentLF = StartingRate * (Maxixum(cos(pi * (1 - CurrentSteps/TotalSteps)))
 $$
-
 
 where StartingRate is the initial learning rate, CurrentLF is the learning rate calcuated at the CurrentSteps, and TotalSteps is the total number of steps.
 
