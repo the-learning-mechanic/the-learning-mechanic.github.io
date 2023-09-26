@@ -12,15 +12,16 @@ I'll attempt to keep the content and links as current as possible.
 
 ![Stuttgart City Library](thumbnail.jpg)
 
-### Machine Learning Resources: 
+### Machine Learning Resources:  
 
-[FastAI](https://www.fast.ai)
 
-[Meta AI](https://ai.meta.com)
+[FastAI](https://www.fast.ai/)
+
+[Meta AI](https://ai.meta.com/)
 
 [Huggingface](https://huggingface.co/)
 
-[PyTorch](https://pytorch.org)
+[PyTorch](https://pytorch.org/)
 
 [Papers With Code](https://paperswithcode.com/)
 
