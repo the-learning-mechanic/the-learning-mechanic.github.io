@@ -1,5 +1,6 @@
 ---
 title: "The Learning Mechanic"
+description: "When you change the way you look at things, the things you look at change. - Max Planck"
 listing:
   contents: posts
   sort: "date desc"
@@ -10,5 +11,3 @@ listing:
 page-layout: full
 title-block-banner: true
 ---
-
-

@@ -1,0 +1,126 @@
+---
+title: "Study Notes-Optimizers and Schedulers"
+description: A Highlevel look at Optimizers and Schedulers
+author: "Manuel Pardo"
+date: "2023-09-20"
+image: mcescher-notes.jpg
+categories: [Study Notes, Optimizers, Schedulers]
+draft: false
+---
+
+In machine learning and deep learning, an optimizer's primary role is to update model parameters during training in order to minimize a given loss or objective function. While learning rate is an important hyperparameter for most optimizers, it's just one of several hyperparameters that can be tuned to control how the optimization process occurs.
+
+## A Breakdown of The Main Responsibilities of An Optimizer:
+
+Parameter Updates: The primary role of an optimizer is to update the model's parameters (weights and biases) in the direction that reduces the loss or error between the predicted values and the actual target values. This update typically involves computing gradients of the loss with respect to the model parameters and adjusting the parameters accordingly.
+
+Learning Rate Control: Most optimizers allow you to specify or adjust the learning rate, which determines the step size of parameter updates. Choosing an appropriate learning rate is crucial, and it can impact the convergence speed and stability of training.
+
+#### Convergence and Stability: 
+Optimizers aim to converge to a solution that minimizes the loss function while avoiding issues like getting stuck in local minima or diverging to infinity. Different optimizers use various techniques and adaptive learning rate strategies to achieve this.
+
+#### Regularization: 
+Some optimizers can incorporate regularization techniques, such as L1 or L2 regularization, directly into the optimization process. This helps in preventing overfitting by adding penalty terms to the loss function.
+
+#### Handling Sparse Data: 
+Certain optimizers, like Adagrad and Adadelta, are designed to handle sparse data efficiently by adapting learning rates individually for each parameter.
+
+#### Choosing Initial Parameters: 
+In some cases, optimizers may be responsible for initializing model parameters. For example, the L-BFGS optimizer often requires an initial parameter estimate.
+
+#### Hyperparameter Tuning: 
+While learning rate is a crucial hyperparameter, optimizers often have other hyperparameters that can be tuned, such as momentum, decay rates, or epsilon values. Tuning these hyperparameters can significantly impact training performance.
+
+## Types of Optimizers
+There are several different types of optimization algorithms commonly used in machine learning and deep learning to train models. These optimizers vary in their approaches to updating model parameters during training. Here are some of the most commonly used optimizers:
+
+#### Stochastic Gradient Descent (SGD): 
+SGD is a fundamental optimization algorithm. It updates model parameters based on the gradient of the loss function with respect to those parameters. It uses a fixed learning rate.
+
+Use Case: SGD is a versatile optimizer suitable for a wide range of machine learning tasks. It is often used for training deep neural networks, linear models, and support vector machines. It can be a good starting point for many optimization problems.
+
+Input: Gradient of the loss function with respect to model parameters, learning rate.  
+Output: Updated model parameters.
+
+#### Momentum: 
+Momentum is an enhancement to SGD that introduces a momentum term. It accumulates gradients from previous steps to help overcome oscillations and converge faster.
+
+Use Case: Momentum is beneficial for overcoming oscillations in the loss landscape that may occur when training CNNs for image classificaiton or RNNs for NLP. It is often used when training deep neural networks to accelerate convergence, especially when the loss surface has irregularities that occur when fine tuning pre-trained models for transfer learning or training VAEs. 
+
+Input: Gradient of the loss function with respect to model parameters, learning rate, momentum coefficient.  
+Output: Updated model parameters.
+
+#### Adagrad: 
+Adagrad adapts the learning rates individually for each parameter. It divides the learning rate by the square root of the sum of squared gradients for each parameter. This is useful for handling sparse data.  
+Use Case: Adagrad is particularly useful when dealing with sparse data or when different model parameters have significantly different scales. It is commonly used in natural language processing (NLP) tasks and recommendation systems.  
+
+Input: Gradient of the loss function with respect to model parameters, learning rate.  
+Output: Updated model parameters.  
+
+#### RMSprop: 
+RMSprop is similar to Adagrad but uses a moving average of squared gradients to adapt learning rates. It addresses some of the issues of Adagrad, such as the learning rate becoming too small.  
+
+Use Case: RMSprop is an adaptive learning rate method that helps mitigate the learning rate decay problem in Adagrad. It is commonly used in training recurrent neural networks (RNNs) and LSTM networks.  
+
+Input: Gradient of the loss function with respect to model parameters, learning rate, decay factor.
+Output: Updated model parameters.
+
+
+#### Adam (Adaptive Moment Estimation): 
+Adam combines the ideas of momentum and RMSprop. It maintains moving averages of both gradients and their squares. Adam is known for its good performance on a wide range of tasks.  
+
+Use Case: Adam is a popular choice for deep learning tasks across various domains. It offers a good balance between the benefits of momentum and RMSprop. It is often used for training convolutional neural networks (CNNs) and recurrent neural networks (RNNs).  
+
+Input: Gradient of the loss function with respect to model parameters, learning rate, momentum coefficient, scaling decay rates.
+Output: Updated model parameters.  
+
+#### Adadelta: 
+Adadelta is an extension of RMSprop that seeks to address its learning rate decay problem. It uses a moving average of past gradients and past updates to adapt learning rates.  
+
+Use Case: Adadelta is designed to handle learning rate adaptation efficiently. It can be useful when you want to train deep learning models without manually tuning learning rates. It's commonly used in natural language processing tasks and computer vision.   
+
+Input: Gradient of the loss function with respect to model parameters, moving average of past gradients, moving average of past updates.
+Output: Updated model parameters.  
+
+##### Nesterov Accelerated Gradient (NAG): 
+NAG is a variant of momentum that calculates the gradient slightly ahead of the current parameter values. It helps in reducing oscillations.  
+
+Use Case: NAG helps in reducing oscillations during training and is often used when fine-tuning pre-trained models in transfer learning scenarios. It can also be advantageous for training models with complex loss surfaces.  
+
+Input: Gradient of the loss function with respect to model parameters, learning rate, momentum coefficient.
+Output: Updated model parameters.
+
+#### L-BFGS (Limited-memory Broyden-Fletcher-Goldfarb-Shanno): 
+L-BFGS is a quasi-Newton optimization method that approximates the [Hessian](https://www.cs.toronto.edu/~jmartens/docs/Deep_HessianFree.pdf) matrix. It is often used for smaller datasets and is known for its efficiency.  
+
+Use Case: L-BFGS is an optimization algorithm that is well-suited for small to medium-sized datasets and when you need fast convergence. It is used in various machine learning algorithms, including logistic regression and SVMs.  
+
+Input: Gradient of the loss function with respect to model parameters, Hessian approximation.
+Output: Updated model parameters.
+
+
+#### Proximal Gradient Descent: 
+This optimization algorithm is often used in sparse models and regularization. It combines gradient descent with proximal operators to enforce certain constraints.  
+
+Use Case: Proximal Gradient Descent is useful when dealing with sparse models and regularization techniques like L1 and L2 regularization. It's commonly used in problems where feature selection or sparsity is essential.
+
+
+#### LBFGS-Optimized Adam (L-BFGS-Adam): 
+This combines L-BFGS and Adam to leverage the benefits of both methods. It can be especially useful for deep learning models with large datasets.  
+
+Input: Gradient of the loss function with respect to model parameters, regularization parameter, learning rate.  
+
+Output: Updated model parameters.  
+
+#### Nadam: 
+Nadam is an extension of Adam that incorporates Nesterov momentum. It aims to combine the benefits of both Nesterov and Adam optimization techniques.
+
+#### FTRL (Follow-The-Regularized-Leader): 
+FTRL is an online learning algorithm often used in large-scale machine learning problems. It handles sparsity and L1 regularization efficiently.
+
+These are just some of the commonly used optimizers in machine learning and deep learning. The choice of optimizer can significantly impact the training process and the final performance of a model. The selection often depends on the specific problem, architecture, and dataset being used.
+
+In summary, while learning rate is a vital aspect of optimization, optimizers play a broader role in controlling the training process and updating model parameters. They are responsible for guiding the model towards finding optimal parameter values that minimize the loss function and achieve better generalization on unseen data.
+
+#### References:
+[Deep learning via Hessian-free optimization](https://www.cs.toronto.edu/~jmartens/docs/Deep_HessianFree.pdf)

@@ -14,7 +14,7 @@ I'll attempt to keep the content and links as current as possible.
 
 ### Machine Learning Resources: 
 
-[FastAI](www.fast.ai)
+[FastAI](https://www.fast.ai)
 
 [Meta AI](https://huggingface.co/)
 

@@ -2,6 +2,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/Resources and Links/Notes.html",
       "/posts/2023-08-28- FastAI Cosine Annealer/2023-08-28- FastAI Cosine Annealer.html",
       "/posts/Resources and Links/index.html"
     ]
