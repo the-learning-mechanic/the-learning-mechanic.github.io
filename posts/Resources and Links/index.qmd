@@ -16,7 +16,7 @@ I'll attempt to keep the content and links as current as possible.
 
 [FastAI](https://www.fast.ai)
 
-[Meta AI](https://huggingface.co/)
+[Meta AI](https://ai.meta.com)
 
 [Huggingface](https://huggingface.co/)
 
